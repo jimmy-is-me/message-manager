@@ -1,0 +1,175 @@
+/**
+ * LINE訊息管理系統 - 額外動畫效果
+ * 可選擇性載入以增強視覺效果
+ */
+
+/* 訊息發送動畫 */
+@keyframes messageSend {
+    0% {
+        opacity: 0.8;
+        transform: scale(0.95);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.lmm-message-sending {
+    animation: messageSend 0.3s ease;
+}
+
+/* 按鈕點擊波紋效果 */
+.lmm-ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.lmm-ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.lmm-ripple:active::after {
+    width: 200px;
+    height: 200px;
+}
+
+/* 載入骨架屏 */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.lmm-skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* 通知徽章彈出 */
+@keyframes badgePop {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.lmm-badge-appear {
+    animation: badgePop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* 訊息滑入效果 */
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.lmm-message-customer {
+    animation: slideInRight 0.4s ease;
+}
+
+/* 表單錯誤抖動 */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+.lmm-form-error {
+    animation: shake 0.5s;
+    border-color: #ef4444 !important;
+}
+
+/* 成功提示 */
+@keyframes successCheck {
+    0% {
+        transform: scale(0) rotate(45deg);
+    }
+    50% {
+        transform: scale(1.2) rotate(45deg);
+    }
+    100% {
+        transform: scale(1) rotate(45deg);
+    }
+}
+
+.lmm-success-icon {
+    animation: successCheck 0.5s ease;
+}
+
+/* 載入旋轉 */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.lmm-loading-spinner {
+    animation: rotate 1s linear infinite;
+}
+
+/* 淡入效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.lmm-fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+/* 淡出效果 */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.lmm-fade-out {
+    animation: fadeOut 0.3s ease;
+}

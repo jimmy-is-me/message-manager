@@ -1,0 +1,378 @@
+/**
+ * LINE訊息管理系統 - 簡約版樣式
+ * 極簡設計，去除不必要的裝飾
+ */
+
+:root {
+    --lmm-primary-color: #06c755;
+    --lmm-primary-hover: #05b04b;
+    --lmm-bg-color: #ffffff;
+    --lmm-bg-chat: #f8f9fa;
+    --lmm-text-color: #333333;
+    --lmm-border-color: #e5e5e5;
+    --lmm-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 聊天小工具容器 */
+.lmm-chat-widget {
+    position: fixed;
+    z-index: 9999;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.lmm-chat-widget.lmm-position-bottom-right {
+    bottom: 20px;
+    right: 20px;
+}
+
+.lmm-chat-widget.lmm-position-bottom-left {
+    bottom: 20px;
+    left: 20px;
+}
+
+/* 切換按鈕 - 簡約版 */
+.lmm-chat-toggle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--lmm-primary-color);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(6, 199, 85, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    position: relative;
+}
+
+.lmm-chat-toggle:hover {
+    background-color: var(--lmm-primary-hover);
+}
+
+.lmm-chat-toggle svg {
+    width: 26px;
+    height: 26px;
+    color: white;
+}
+
+.lmm-chat-toggle .lmm-icon-close {
+    display: none;
+}
+
+.lmm-chat-toggle.active .lmm-icon-chat {
+    display: none;
+}
+
+.lmm-chat-toggle.active .lmm-icon-close {
+    display: block;
+}
+
+/* 未讀徽章 - 簡約版 */
+.lmm-unread-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background-color: #ff3b30;
+    color: white;
+    border-radius: 10px;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: 600;
+    min-width: 18px;
+    text-align: center;
+}
+
+/* 聊天視窗 - 簡約版 */
+.lmm-chat-window {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 360px;
+    max-width: calc(100vw - 40px);
+    height: 520px;
+    max-height: calc(100vh - 120px);
+    background: var(--lmm-bg-color);
+    border-radius: 12px;
+    box-shadow: var(--lmm-shadow);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.lmm-chat-window.active {
+    display: flex;
+}
+
+/* 聊天標題列 - 簡約版 */
+.lmm-chat-header {
+    background: var(--lmm-primary-color);
+    color: white;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.lmm-header-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lmm-header-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lmm-header-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.lmm-header-text h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.lmm-status-text {
+    margin: 0;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.85);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.lmm-status-text::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #4ade80;
+    border-radius: 50%;
+}
+
+.lmm-close-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+}
+
+.lmm-close-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* 訊息區域 - 簡約版 */
+.lmm-messages-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    background: var(--lmm-bg-chat);
+}
+
+.lmm-messages-area::-webkit-scrollbar {
+    width: 4px;
+}
+
+.lmm-messages-area::-webkit-scrollbar-thumb {
+    background: #d0d0d0;
+    border-radius: 2px;
+}
+
+.lmm-message {
+    margin-bottom: 12px;
+    display: flex;
+}
+
+.lmm-message-bubble {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    word-wrap: break-word;
+    line-height: 1.4;
+    font-size: 14px;
+}
+
+.lmm-message-admin .lmm-message-bubble {
+    background: var(--lmm-primary-color);
+    color: white;
+    border-bottom-left-radius: 4px;
+}
+
+.lmm-message-customer {
+    justify-content: flex-end;
+}
+
+.lmm-message-customer .lmm-message-bubble {
+    background: white;
+    color: var(--lmm-text-color);
+    border-bottom-right-radius: 4px;
+    border: 1px solid var(--lmm-border-color);
+}
+
+.lmm-message-time {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 4px;
+    display: block;
+    text-align: right;
+}
+
+.lmm-message-customer .lmm-message-time {
+    color: #999;
+}
+
+/* 輸入區域 - 簡約版 */
+.lmm-input-area {
+    border-top: 1px solid var(--lmm-border-color);
+    background: white;
+    padding: 12px;
+}
+
+.lmm-customer-info-form {
+    margin-bottom: 12px;
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.lmm-customer-info-form.hidden {
+    display: none;
+}
+
+.lmm-form-group {
+    margin-bottom: 8px;
+}
+
+.lmm-form-group:last-child {
+    margin-bottom: 0;
+}
+
+.lmm-form-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--lmm-text-color);
+    margin-bottom: 4px;
+}
+
+.lmm-form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--lmm-border-color);
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.lmm-form-group input:focus {
+    outline: none;
+    border-color: var(--lmm-primary-color);
+}
+
+.lmm-message-input-wrapper {
+    display: flex;
+    gap: 6px;
+    align-items: flex-end;
+}
+
+#lmm-message-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--lmm-border-color);
+    border-radius: 18px;
+    font-size: 14px;
+    resize: none;
+    max-height: 80px;
+    font-family: inherit;
+}
+
+#lmm-message-input:focus {
+    outline: none;
+    border-color: var(--lmm-primary-color);
+}
+
+.lmm-send-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--lmm-primary-color);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    z-index: 10;
+    position: relative;
+}
+
+.lmm-send-btn:hover {
+    background: var(--lmm-primary-hover);
+}
+
+.lmm-send-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.lmm-send-btn svg {
+    width: 18px;
+    height: 18px;
+    color: white;
+    pointer-events: none;
+}
+
+/* 表情符號按鈕 */
+.lmm-emoji-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    z-index: 10;
+    position: relative;
+}
+
+.lmm-emoji-btn:hover {
+    background: #f0f0f0;
+}
+
+.lmm-emoji-btn svg {
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+}
+
+/* 手機版優化 */
+@media (max-width: 768px) {
+    .lmm-chat-window {
+        width: 100%;
+        height: calc(100vh - 100px);
+        bottom: 70px;
+    }
+    
+    .lmm-chat-header {
+        padding-top: max(14px, env(safe-area-inset-top));
+    }
+    
+    .lmm-send-btn {
+        width: 46px;
+        height: 46px;
+    }
+}

@@ -1,0 +1,182 @@
+/**
+ * 表情符號選擇器樣式
+ */
+
+.lmm-emoji-picker {
+    position: absolute;
+    bottom: 70px;
+    left: 16px;
+    right: 16px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.15);
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+    z-index: 9999;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lmm-emoji-header {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 8px;
+}
+
+.lmm-emoji-tabs {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+.lmm-emoji-tabs::-webkit-scrollbar {
+    height: 4px;
+}
+
+.lmm-emoji-tabs::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 2px;
+}
+
+.lmm-emoji-tab {
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+    color: #666;
+    font-size: 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.lmm-emoji-tab:hover {
+    background: #f5f5f5;
+}
+
+.lmm-emoji-tab.active {
+    background: var(--lmm-primary-color);
+    color: white;
+    font-weight: 600;
+}
+
+.lmm-emoji-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+}
+
+.lmm-emoji-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.lmm-emoji-content::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+.lmm-emoji-category {
+    display: none;
+}
+
+.lmm-emoji-category.active {
+    display: block;
+}
+
+.lmm-emoji-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 4px;
+}
+
+.lmm-emoji-item {
+    padding: 8px;
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lmm-emoji-item:hover {
+    background: #f0f0f0;
+    transform: scale(1.2);
+}
+
+.lmm-emoji-item:active {
+    transform: scale(1.1);
+}
+
+/* 表情符號按鈕 */
+.lmm-emoji-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    color: #666;
+    z-index: 10;
+    position: relative;
+}
+
+.lmm-emoji-btn:hover {
+    background: #f5f5f5;
+    color: var(--lmm-primary-color);
+}
+
+.lmm-emoji-btn:active {
+    transform: scale(0.95);
+}
+
+.lmm-emoji-btn.active {
+    background: var(--lmm-primary-color);
+    color: white;
+}
+
+.lmm-emoji-btn svg {
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+}
+
+/* 手機版調整 */
+@media (max-width: 768px) {
+    .lmm-emoji-picker {
+        max-height: 250px;
+    }
+    
+    .lmm-emoji-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    
+    .lmm-emoji-item {
+        font-size: 22px;
+        padding: 6px;
+    }
+    
+    .lmm-emoji-btn {
+        width: 44px;
+        height: 44px;
+    }
+}
